@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Revisi&oacute;n de Facturas</title>
+		<style>
+			#info {
+				display : none;
+			}
+		</style>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var dropZone = document.getElementById('drop_zone');
+				dropZone.addEventListener('dragover', handleDragOver, false);
+				dropZone.addEventListener('drop', handleFileSelect, false);
+				}
+			);
+
+			function handleDragOver(evt) {
+				evt.stopPropagation();
+				evt.preventDefault();
+				evt.dataTransfer.dropEffect = 'copy';
+			}
+
+			function handleFileSelect(evt) {
+				for (var i=0; i<evt.dataTransfer.files.length; i++) {
+					alert (evt.dataTransfer.files[i].mozFullPath());
+				}
+				alert (evt);
+				evt.stopPropagation();
+				evt.preventDefault();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="drop_zone">Archivo XML aqui.</div>
+		<div id="info">
+			<table id="tbl_info">
+				<tr><th colspan="2">Comprobante</th></tr>
+				<tr><td>Fecha:</td><td></td></tr>
+				<tr><td>Moneda:</td><td></td></tr>
+				<tr><td>Forma de pago:</td><td></td></tr>
+				<tr><td>Método de pago:</td><td></td></tr>
+				<tr><td>Número de cuenta:</td><td></td></tr>
+				<tr><td>Subtotal:</td><td></td></tr>
+				<tr><td>Total:</td><td></td></tr>
+			</table>
+		</div>
+	</body>
+</html>
+
